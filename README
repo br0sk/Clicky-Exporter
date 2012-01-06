@@ -8,7 +8,5 @@ and paginates the results and downloads the data in XML format.
 This is useful if you want to have the raw website statistical data for 
 analysis in a 3d party product that support import of XML files.
 
-The script is intended to run on PHP 5.3.x on windows and it need to have the
+The script is intended to run on PHP 5.3.x on Windows and it need to have the
 curl module activated.
-
-test
