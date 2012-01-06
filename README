@@ -1,0 +1,12 @@
+This is a php script that will fetch data from a site on an account 
+in www.getclicky.com.
+
+I created it since there is no full export feature in Clikcy. The API only
+allows for fetching 5000 records in one go. This script addresses this problem
+and paginates the results and downloads the data in XML format.
+
+This is useful if you want to have the raw website statistical data for 
+analysis in a 3d party product that support import of XML files.
+
+The script is intended to run on PHP 5.3.x on windows and it need to have the
+curl module activated.
