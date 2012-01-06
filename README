@@ -10,3 +10,5 @@ analysis in a 3d party product that support import of XML files.
 
 The script is intended to run on PHP 5.3.x on windows and it need to have the
 curl module activated.
+
+test
