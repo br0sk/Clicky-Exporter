@@ -1,12 +1,58 @@
-This is a php script that will fetch data from a site on an account 
-in www.getclicky.com.
+*This realease is very BETA and interfaces are likely to change*
+
+This is a php script that will fetch statistical data from a site on an account in www.getclicky.com.
 
 I created it since there is no full export feature in Clikcy. The API only
 allows for fetching 5000 records in one go. This script addresses this problem
 and paginates the results and downloads the data in XML format.
 
-This is useful if you want to have the raw website statistical data for 
-analysis in a 3d party product that support import of XML files.
+This program is useful if you want to have access to the raw website statistical data for analysis in a 3d party product that support import of XML files.
 
-The script is intended to run on PHP 5.3.x on Windows and it need to have the
-curl module activated.
+The script is intended to run on PHP 5.3.x on Windows and PHP needs to have the curl module activated.
+
+Installation instructions
+-------------------------------------------
+The script is only tested on Windows
+
+Step 1-5 install PHP if you don't already have it running
+1. Download php5.3 from here http://windows.php.net/download/ take one of the zip files (check out "Which version do I choose?" on that page to chose the right one and install the right C++ runtime library)
+2. Unpack the zip file to the directory where you want to php.exe to be (I usually go for c:\php\)
+3. Open a command prompt and run PHP like this c:\php\php.exe -i. This should print php info to the command line. If this works PHP is installed properly
+4. Rename the file c:\php\php.ini-production to c:\php\php.ini. This makes PHP automatically load this file when the command line script is run.
+5. Now to make sure the CURL module is activated open c:\php\php.ini in an editor. Search for php_curl.dll. Overwrite that row with "extension=ext/php_curl.dll".
+
+Step 6- Install the Clicky Exporter script
+6. Download  the zip file or use GIT to get the files somwhere locally on your computer
+7. Open a command prompt and navigate to the folder where you unzipped the files.
+8. Log in to www.getclicky.com go to preferences for the site you want to download data for. Copy the siteId and the siteKey they need to be added in the next step.
+9. To run a test download of data run this from the command line: c:\php\php.exe ClickyExporter\clicky_exporter.php -t visitor -s "2012-01-13" -e "2012-01-13" -i [add your siteId here] -k [add you sitekey here]. This should pull some data down.
+10. Look at the output of the script to find where the files are put.
+11. Now you can set the parameters for the script by changing the config file called clicky_exporter_config.php
+
+If you set command line parameters they will override the parameters in the config file.
+
+These are the valid parameters to use:
+ --runtimeFolder -r			This is where the output files go. Example: Absolute path "C:/data" or Relative path "data"
+ --clickySiteId -i			This is the site id you can find in the Clicky settings
+ --clickySiteKey -k			This is the site key you can find in the Clicky settings
+ --type -t							This is the type of exporter to use. Example visitor (this is the only exporter that is available for now.)
+ --startDateFormat -s		The date for when to start gathering data. Example: 2012-01-01
+ --endDateFormat -e			The date for when to stop gathering data. Example: 2012-01-01
+ --folders	-f					Set this to true if you want a folder with a unique name to be created in the runtime folder every time you run the program. If set to false the downloaded files goes striaght in the runtime folder.
+
+-------------------------------------------
+
+Known Issues:
+Only the visitor downloader is implemented so far
+Only out put format of XML is supported so far
+The output files will not be merged in to one file so far
+
+
+The script supports pluggable exporters:
+
+To create you own exporter do this:
+1. Copy ClickyExporter/Exporter/ClickyVisitorExporter.php and rename it like this ClickyExporter/Exporter/Clicky[RecordType]Exporter.php.
+2. Now make sure to give the new exporter class the exact same name as the file you just created but without the .php at the end. 
+Doing so will make the file be automatically loaded if you add this command line parameter "-t RecordType".
+3. Now you have to implement the IClickyExporter interface. Same again easiest way is to copy the implementation of ClickyExporter/Exporter/ClickyVisitorExporter and adapt it for the new exporter.
+
