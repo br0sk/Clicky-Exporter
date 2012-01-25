@@ -6,7 +6,6 @@ namespace ClickyExporter;
 spl_autoload_extensions(".php");
 spl_autoload_register();
 
-
 /**
  * This is the main file that you run from the command line like this:
  * It will use the file clicky_exporter_config.php to set the default values for the program.
@@ -44,6 +43,9 @@ $nrIterations = 0;
  */
 $theExporter = null;
 
+//Change directory to the directory where this file resides, we do this so the autoloading using the namespaces works correctly
+chdir(dirname(__FILE__)."/../");
+
 //Decide what exporter to load
 $exporterClass = 'ClickyExporter\Exporter\Clicky'.ucfirst(strtolower(ClickyExporterConfig::singleton()->getParam('type'))).'Exporter';
 $theExporter = new  $exporterClass;
@@ -53,9 +55,6 @@ $theExporter->fetchNrRecordsToGet();
 
 //Calculate the number of batches we have to run
 $nrIterations = $theExporter->getTotalNrBatches();
-
-//Change directory to the directory where this file resides
-chdir(dirname(__FILE__));
 
 //Create the runtime folder if it doesn't already exists
 if(!is_dir(ClickyExporterConfig::singleton()->getParam('runtimeFolder')))

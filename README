@@ -2,7 +2,7 @@
 
 This is a php script that will fetch statistical data from a site on an account in www.getclicky.com.
 
-I created it since there is no full export feature in Clikcy. The API only
+I created it since there is no full export feature in Clicky. The API only
 allows for fetching 5000 records in one go. This script addresses this problem
 and paginates the results and downloads the data in XML format.
 
