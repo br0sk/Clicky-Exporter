@@ -8,7 +8,7 @@
 
 **This realease is very BETA and interfaces are likely to change**
 
-## What is Clicky Exporter
+## What is Clicky Exporter?
 It is a PHP command line program that will fetch statistical data from a site on an account in www.getclicky.com.
 It supports this data:
 
