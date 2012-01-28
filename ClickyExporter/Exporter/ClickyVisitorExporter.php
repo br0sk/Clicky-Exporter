@@ -65,7 +65,7 @@ class ClickyVisitorExporter Extends ClickyExporterBase implements IClickyExporte
     while($fetchSuccess == false)
     {
       $ch = curl_init($clickyUrl);
-      curl_setopt($ch, CURLOPT_TIMEOUT, 180);
+      curl_setopt($ch, CURLOPT_TIMEOUT, ClickyExporterConfig::singleton()->getParam('timeout'));
       curl_setopt($ch, CURLOPT_FILE, $fh);
       curl_setopt($ch, CURLOPT_USERAGENT , 'Mozilla/5.0 (Windows; U; Windows NT 5.1; pl; rv:1.9) Gecko/2008052906 Firefox/3.0');
       curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);

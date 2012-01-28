@@ -6,9 +6,6 @@ namespace ClickyExporter;
  * have to supply it on the command line every time you run the script.
 */
 
-//You might need to adjust this one if you get problems with timeout if you run big file batches
-ini_set('default_socket_timeout', 180);
-
 //Control the memory used by the application
 ini_set('memory_limit','128M');
 
@@ -79,16 +76,25 @@ $folders = true;
  * @var integer
  */
 $maxIterations = 0;
+
+/**
+ * This is the timeout for Curl in seconds. When it time outs the download will be restarted for the specific file/batch
+ * if you are on a slow flaky connection this should probably be set higher but it is all depending on how big batches 
+ * you are running.
+ */
+$timeout = 180;
+
 //End editable variables
 
 $configFileParamArray = array(
-	'runtimeFolder' => $runtimeFolder,
-	'clickySiteId' => $clickySiteId,
-	'clickySiteKey' => $clickySiteKey,
-	'startDateFormat' => $startDateFormat,
-	'endDateFormat' 	=> $endDateFormat,
+	'runtimeFolder' 	=> $runtimeFolder,
+	'clickySiteId' 		=> $clickySiteId,
+	'clickySiteKey' 	=> $clickySiteKey,
+	'startDateFormat' 	=> $startDateFormat,
+	'endDateFormat'		=> $endDateFormat,
 	'batchSize'		=> $batchSize,
-	'maxIterations' 	=> $maxIterations,
-	'type'	=>	$type,
-	'folders'	=>	$folders);
+	'maxIterations'		=> $maxIterations,
+	'type'			=> $type,
+	'folders'		=> $folders,
+	'timeout'		=> $timeout);
 ?>

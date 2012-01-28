@@ -44,8 +44,9 @@ class ClickyExporterConfig
 	array("type:", "t:"),
 	array("startDateFormat:", "s:"),
 	array("endDateFormat:", "e:"),
+	array("batchSize:", "b:"),
 	array("folders:", "f:"),
-	);
+	array("timeout:", "o:"));
 
 	/**
 	 * This is the name value config array that have been built up from the config file and the command line

@@ -21,7 +21,9 @@ spl_autoload_register();
  * --type -t							This is the type of exporter to use. Example visitor (this is the only exporter that is available for now.)
  * --startDateFormat -s		The date for when to start gathering data. Example: 2012-01-01
  * --endDateFormat -e			The date for when to stop gathering data. Example: 2012-01-01
+ * --batchSize -b					The number of records to get in one batch fetch.
  * --folders	-f					Set this to true if you want a folder with a unique name to be created in the runtime folder every time you run the program. If set to false the downloaded files goes striaght in the runtime folder.
+ * --timeout	-o					This is the curl timeout value in seconds. You set it to make the download restart if the time limit is passed.
  * Examples:
  *
  * This command gets all the visitors for 2012-01-01
