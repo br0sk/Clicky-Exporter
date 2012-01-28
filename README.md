@@ -70,7 +70,7 @@ The script is only tested on Windows
 * The output files will not be merged in to one file so far
 
 
-##How do I extend Clicky exporter
+##How do I extend Clicky exporter?
 The script supports pluggable exporters:
 
 To create you own exporter do this:
