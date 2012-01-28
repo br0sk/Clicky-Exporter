@@ -35,7 +35,9 @@ The script is only tested on Windows
 1. Open a command prompt and run PHP like this c:\php\php.exe -i. This should print PHP info to the command line. If this works PHP is installed properly
 1. Rename the file c:\php\php.ini-production to c:\php\php.ini. This makes PHP automatically load this file when the command line script is run.
 1. Now to make sure the CURL module is activated open c:\php\php.ini in an editor. Search for php_curl.dll. Overwrite that row with "extension=ext/php_curl.dll".
+
 ###Install and run Clicky Exporter
+
 1. Download  the zip file or use GIT to get the files somewhere locally on your computer
 1. Open a command prompt and navigate to the folder where you unzipped the files.
 1. Log in to <http://www.getclicky.com> go to preferences for the site you want to download data for. Copy the siteId and the siteKey. They need to be added in the next step.
